@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dr. Hayati Bice İmza Günü - 11 Ekim 2025, Türk Yurdu Standı">
+    <title>İmza Günü - Dr. Hayati Bice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            perspective: 1500px;
+            max-width: 1400px;
+            width: 100%;
+        }
+        
+        .table {
+            background: linear-gradient(180deg, #d4a574 0%, #b8956a 100%);
+            border-radius: 25px;
+            padding: 80px 50px 50px;
+            box-shadow: 
+                0 30px 80px rgba(0,0,0,0.5),
+                inset 0 2px 0 rgba(255,255,255,0.3);
+            position: relative;
+            transform: rotateX(3deg);
+        }
+        
+        .table::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(212,165,116,0.9) 50%, 
+                transparent 100%);
+            border-radius: 25px 25px 0 0;
+        }
+        
+        .banner {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin: -80px -50px 40px;
+            border-radius: 25px 25px 0 0;
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 6px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border-bottom: 4px solid #d4a574;
+        }
+        
+        .author-section {
+            background: linear-gradient(135deg, #06beb6 0%, #48b1bf 50%, #06beb6 100%);
+            padding: 50px;
+            margin: 40px -30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 
+                0 15px 40px rgba(0,0,0,0.3),
+                inset 0 -2px 10px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .author-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .author-title {
+            font-size: 28px;
+            color: white;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .author-name {
+            font-size: 56px;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 8px;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.4);
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+        
+        .author-subtitle {
+            font-size: 22px;
+            color: rgba(255,255,255,0.95);
+            letter-spacing: 3px;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tablecloth {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            margin: 40px -30px 30px;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 
+                0 8px 30px rgba(0,0,0,0.3),
+                inset 0 2px 5px rgba(255,255,255,0.2);
+            position: relative;
+        }
+        
+        .tablecloth::after {
+            content: '✦ KİTAPLAR ✦';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255,255,255,0.08);
+            font-size: 60px;
+            font-weight: bold;
+            letter-spacing: 12px;
+            pointer-events: none;
+        }
+        
+        .books-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 30px 20px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+        
+        .book {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 
+                0 15px 40px rgba(0,0,0,0.4),
+                0 2px 10px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0);
+            flex: 0 0 auto;
+            width: 280px;
+        }
+        
+        .book::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .book:hover::before {
+            left: 100%;
+        }
+        
+        .book:hover {
+            transform: translateY(-15px) rotateZ(-2deg) scale(1.05);
+            box-shadow: 
+                0 25px 60px rgba(0,0,0,0.5),
+                0 10px 20px rgba(0,0,0,0.4);
+        }
+        
+        .book img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .book::after {
+            content: '✍';
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            font-size: 40px;
+            opacity: 0;
+            transition: all 0.4s ease;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+        }
+        
+        .book:hover::after {
+            opacity: 1;
+            transform: rotate(15deg) scale(1.2);
+        }
+        
+        .accessories {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+            padding: 30px;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        
+        .accessory {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px 40px;
+            border-radius: 60px;
+            box-shadow: 
+                0 6px 20px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.5);
+            font-size: 28px;
+            animation: float 3s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+        
+        .accessory:hover {
+            transform: scale(1.1);
+        }
+        
+        .accessory:nth-child(1) { animation-delay: 0s; }
+        .accessory:nth-child(2) { animation-delay: 1s; }
+        .accessory:nth-child(3) { animation-delay: 2s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
+        }
+        
+        .decorative-line {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4a574, transparent);
+            margin: 30px 0;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            .table {
+                padding: 60px 30px 30px;
+            }
+            
+            .books-container {
+                flex-wrap: wrap;
+            }
+            
+            .banner {
+                font-size: 24px;
+                letter-spacing: 3px;
+                padding: 20px;
+                margin: -60px -30px 30px;
+            }
+            
+            .author-name {
+                font-size: 36px;
+                letter-spacing: 4px;
+            }
+            
+            .author-title {
+                font-size: 20px;
+            }
+            
+            .author-section {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="table">
+            <div class="banner">
+                ✦ İMZA GÜNÜ ✦
+            </div>
+            
+            <div class="author-section">
+                <div class="author-title">Yazar</div>
+                <div class="author-name">DR. HAYATİ BİCE</div>
+                <div class="author-subtitle">Kitaplarını İmzalıyor</div>
+            </div>
+            
+            <div class="decorative-line"></div>
+            
+            <div class="tablecloth">
+                <div class="books-container">
+
+                    <div class="book">
+                        <img src="YYAA-320px.jpg" alt="Yesevilik">
+                    </div>
+                    <div class="book">
+                        <img src="DHKH-320px.jpg" alt="Divan-ı Hikmet'in Kavram Haritası">
+                    </div>
+                    <div class="book">
+                        <img src="TRuyasi-320px.jpg" alt="Türkistan Rüyası">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="decorative-line"></div>
+
+            <div class="container">
+                <div class="table">
+                    <div class="banner">
+                        ✦ TÜRK YURDU STANDI ✦
+                    </div>
+                    
+                    <div class="container">
+                        <div class="table">
+                            <div class="banner">
+                                Yer: ATO Congresium     Stand:C16 </div>      
+                    <div class="container">
+                        <div class="table">
+                            <div class="banner">Tarih: 11 Ekim 2025 ✦ Saat: 13.00 - 15.00
+                            </div>
+                            
+                            <div class="accessories">
+                                <div class="accessory">🖊️ İmza</div>
+                                <div class="accessory">📚 Kitap</div>
+                                <div class="accessory">☕ Çay</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
